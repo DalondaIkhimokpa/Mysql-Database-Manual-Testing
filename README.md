@@ -16,8 +16,7 @@ This portfolio demonstrates essential database testing techniques through:
 
 ## 📂 Repository Structure
 sql-testing-portfolio/
--│
--├── index.html # Portfolio webpage
+- ├── index.html # Portfolio webpage
 - ├── assets/
 - ├── GITLOGO.png
 - ├── screenshots/
