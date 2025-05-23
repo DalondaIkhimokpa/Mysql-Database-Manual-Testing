@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
   <title>MySQL Testing Portfolio</title>
   <style>
     body {
@@ -88,11 +92,11 @@
       <div class="test-case">
         <h3>1. Find Products Under $100</h3>
         <p>Validate price range constraints</p>
-        <div class="sql-code">
+        <pre><code class="language-sql">
           SELECT product_id, name, price 
           FROM products 
           WHERE price &lt; 100;
-        </div>
+        </code></pre>
         <div class="result">
           <strong>Expected Result:</strong> Should return only products priced below $100 (headphones in sample data).
         </div>
@@ -106,11 +110,11 @@
       <div class="test-case">
         <h3>2. Find Customers Without Emails</h3>
         <p>Check for NULL values in required fields</p>
-        <div class="sql-code">
+        <pre><code class="language-sql">
           SELECT customer_id, name 
           FROM customers 
           WHERE email IS NULL;
-        </div>
+        </code></pre>
         <div class="result">
           <strong>Expected Result:</strong> Empty result set proving all customers have emails.
         </div>
@@ -128,11 +132,11 @@
       <div class="test-case">
         <h3>3. Attempt Invalid Price Update</h3>
         <p>Test CHECK constraint on product prices</p>
-        <div class="sql-code">
+        <pre><code class="language-sql">
           UPDATE products 
           SET price = -50 
           WHERE product_id = 101;
-        </div>
+        </code></pre>
         <div class="result">
           <strong>Expected Result:</strong> Error message about check constraint violation.
         </div>
@@ -144,9 +148,9 @@
       <div class="test-case">
         <h3>4. Delete Customer with Orders</h3>
         <p>Test foreign key constraint</p>
-        <div class="sql-code">
+        <pre><code class="language-sql">
           DELETE FROM customers WHERE customer_id = 1;
-        </div>
+        </code></pre>
         <div class="result">
           <strong>Expected Result:</strong> Error 1451 about foreign key constraint failure.
         </div>
@@ -162,7 +166,7 @@
       <div class="test-case">
         <h3>5. Update Customer Email</h3>
         <p>Valid data modification</p>
-        <div class="sql-code">
+        <pre><code class="language-sql">
           -- Before:
           SELECT * FROM customers WHERE customer_id = 1;
           
@@ -173,7 +177,7 @@
           
           -- After:
           SELECT * FROM customers WHERE customer_id = 1;
-        </div>
+        </code></pre>
         <div class="result">
           <strong>Expected Result:</strong> Successful update showing old and new email.
         </div>
@@ -188,7 +192,7 @@
       <div class="test-case">
         <h3>6. Delete Orphaned Product</h3>
         <p>Safe deletion with no dependencies</p>
-        <div class="sql-code">
+        <pre><code class="language-sql">
           -- Create test product:
           INSERT INTO products VALUES (104, 'Test Product', 10.99, 0);
           
@@ -197,7 +201,7 @@
           
           -- Verify:
           SELECT * FROM products WHERE product_id = 104;
-        </div>
+        </code></pre>
         <div class="result">
           <strong>Expected Result:</strong> Product created and deleted successfully.
         </div>
@@ -215,10 +219,10 @@
       <h2>Database Structure Proof</h2>
       <div class="test-case">
         <h3>7. Show Table Constraints</h3>
-        <div class="sql-code">
+        <pre><code class="language-sql">
           SHOW CREATE TABLE customers;
           SHOW CREATE TABLE orders;
-        </div>
+        </code></pre>
         <div class="result">
           <strong>Expected Result:</strong> Display of foreign key relationships.
         </div>
