@@ -15,23 +15,23 @@ This portfolio demonstrates essential database testing techniques through:
 - **Safe data modification practices**
 
 ## 📂 Repository Structure
--- sql-testing-portfolio/
-│
-├── index.html # Portfolio webpage
-├── assets/
-├── GITLOGO.png
-├── screenshots/
-│ ├─constraint.test
-│ ├─data.validation
-│ ├─safe.delete.seq
-├── scripts/
-│ ├── database/
-│ ├── schema.sql # Database schema
-│ ├── test cases/
-│ ├── test_cases.sql # All test queries
-├── LICENSE
-├── README.md # This documentation
-└── .gitignore # Ignore unnecessary files
+sql-testing-portfolio/
+- │
+- ├── index.html # Portfolio webpage
+- ├── assets/
+- ├── GITLOGO.png
+- ├── screenshots/
+- │ ├─constraint.test
+- │ ├─data.validation
+- │ ├─safe.delete.seq
+- ├── scripts/
+- │ ├── database/
+- │ ├── schema.sql # Database schema
+- │ ├── test cases/
+- │ ├── test_cases.sql # All test queries
+- ├── LICENSE
+- ├── README.md # This documentation
+- └── .gitignore # Ignore unnecessary files
 
 
 ## 🔍 Test Cases Demonstrated
