@@ -66,7 +66,7 @@ mysql> source scripts/schema.sql
 mysql> source scripts/test_cases.sql  
 
 ## 🎥 Video Demonstration
-Video Thumbnail
+Video Thumbnail-[comming soon]
 A 45-minute walkthrough showing:
 Database setup
 Test case execution
