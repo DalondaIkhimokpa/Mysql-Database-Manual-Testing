@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MySQL Testing Portfolio</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f8f9fa;
+    }
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      color: #2c3e50;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #e8ae9e;
+    }
+    .test-case {
+      background: white;
+      border-left: 4px solid #e8ae9e;
+      padding: 20px;
+      margin: 25px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-radius: 0 4px 4px 0;
+    }
+    .sql-code {
+      background: #2c3e50;
+      color: #ecf0f1;
+      padding: 15px;
+      border-radius: 4px;
+      font-family: monospace;
+      overflow-x: auto;
+      margin: 10px 0;
+    }
+    .result {
+      background: #e8f4f8;
+      padding: 15px;
+      margin-top: 15px;
+      border-left: 4px solid #3498db;
+      border-radius: 0 4px 4px 0;
+    }
+    .screenshot {
+      background: #f5f5f5;
+      padding: 15px;
+      margin: 15px 0;
+      text-align: center;
+      border: 1px dashed #ccc;
+    }
+    .screenshot img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ddd;
+    }
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid #e8ae9e;
+      color: #666;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>MySQL Database Testing Portfolio</h1>
+    <p>Demonstrating SQL validation, constraints, and error handling</p>
+  </header>
+
+  <main>
+    <section id="project-overview">
+      <h2>E-Commerce Database Test Cases</h2>
+      <p>This project demonstrates practical SQL testing scenarios including data validation, constraint enforcement, and proper error handling in MySQL.</p>
+    </section>
+
+    <section id="validation-tests">
+      <h2>Data Validation Tests</h2>
+
+      <div class="test-case">
+        <h3>1. Find Products Under $100</h3>
+        <p>Validate price range constraints</p>
+        <div class="sql-code">
+          SELECT product_id, name, price 
+          FROM products 
+          WHERE price &lt; 100;
+        </div>
+        <div class="result">
+          <strong>Expected Result:</strong> Should return only products priced below $100 (headphones in sample data).
+        </div>
+        <div class="screenshot">
+          <!-- Replace with your actual screenshot -->
+          <img src="assets/screenshots/Screenshot 2025-05-23 at 8.18.45 AM.png" alt="Screenshot of SQL query result">
+          <p>Example of products under $100</p>
+        </div>
+      </div>
+
+      <div class="test-case">
+        <h3>2. Find Customers Without Emails</h3>
+        <p>Check for NULL values in required fields</p>
+        <div class="sql-code">
+          SELECT customer_id, name 
+          FROM customers 
+          WHERE email IS NULL;
+        </div>
+        <div class="result">
+          <strong>Expected Result:</strong> Empty result set proving all customers have emails.
+        </div>
+        <div class="screenshot">
+          <!-- Replace with your actual screenshot -->
+          <img src="assets/screenshots/Screenshot 2025-05-23 at 8.26.18 AM.png" alt="Screenshot of SQL query result">
+          <p>Example of customers without emails</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="constraint-tests">
+      <h2>Constraint Validation Tests</h2>
+
+      <div class="test-case">
+        <h3>3. Attempt Invalid Price Update</h3>
+        <p>Test CHECK constraint on product prices</p>
+        <div class="sql-code">
+          UPDATE products 
+          SET price = -50 
+          WHERE product_id = 101;
+        </div>
+        <div class="result">
+          <strong>Expected Result:</strong> Error message about check constraint violation.
+        </div>
+        <div class="screenshot">
+        <img src="assets/screenshots/Screenshot 2025-05-23 at 8.30.11 AM.png" alt="Screenshot of SQL error"> 
+        </div>
+      </div>
+
+      <div class="test-case">
+        <h3>4. Delete Customer with Orders</h3>
+        <p>Test foreign key constraint</p>
+        <div class="sql-code">
+          DELETE FROM customers WHERE customer_id = 1;
+        </div>
+        <div class="result">
+          <strong>Expected Result:</strong> Error 1451 about foreign key constraint failure.
+        </div>
+        <div class="screenshot">
+          <img src="assets/screenshots/Screenshot 2025-05-23 at 8.32.12 AM.png" alt="">
+        </div>
+      </div>
+    </section>
+
+    <section id="successful-operations">
+      <h2>Successful Operations</h2>
+
+      <div class="test-case">
+        <h3>5. Update Customer Email</h3>
+        <p>Valid data modification</p>
+        <div class="sql-code">
+          -- Before:
+          SELECT * FROM customers WHERE customer_id = 1;
+          
+          -- Update:
+          UPDATE customers 
+          SET email = 'alice_new@example.com' 
+          WHERE customer_id = 1;
+          
+          -- After:
+          SELECT * FROM customers WHERE customer_id = 1;
+        </div>
+        <div class="result">
+          <strong>Expected Result:</strong> Successful update showing old and new email.
+        </div>
+        <div class="screenshot">
+          <img src="assets/screenshots/Screenshot 2025-05-23 at 11.13.48 AM.png" alt="Screenshot of SQL query result">
+          <img src="assets/screenshots/Screenshot 2025-05-23 at 11.15.38 AM.png" alt="Screenshot of SQL query result">
+          <img src="assets/screenshots/Screenshot 2025-05-23 at 11.16.11 AM.png" alt="Screenshot of SQL query result">
+          <p>Example of customer email update</p>
+        </div>
+      </div>
+
+      <div class="test-case">
+        <h3>6. Delete Orphaned Product</h3>
+        <p>Safe deletion with no dependencies</p>
+        <div class="sql-code">
+          -- Create test product:
+          INSERT INTO products VALUES (104, 'Test Product', 10.99, 0);
+          
+          -- Delete it:
+          DELETE FROM products WHERE product_id = 104;
+          
+          -- Verify:
+          SELECT * FROM products WHERE product_id = 104;
+        </div>
+        <div class="result">
+          <strong>Expected Result:</strong> Product created and deleted successfully.
+        </div>
+        <div class="screenshot">
+          <img src="assets/screenshots/Screenshot 2025-05-23 at 11.50.31 AM.png" alt="Screenshot of SQL query result">
+          <img src="assets/screenshots/Screenshot 2025-05-23 at 11.51.03 AM.png" alt="Screenshot of SQL query result">  
+          <img src="assets/screenshots/Screenshot 2025-05-23 at 11.51.36 AM.png" alt="Screenshot of SQL query result">
+        
+          <p>Example of product deletion</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="database-structure">
+      <h2>Database Structure Proof</h2>
+      <div class="test-case">
+        <h3>7. Show Table Constraints</h3>
+        <div class="sql-code">
+          SHOW CREATE TABLE customers;
+          SHOW CREATE TABLE orders;
+        </div>
+        <div class="result">
+          <strong>Expected Result:</strong> Display of foreign key relationships.
+        </div>
+        <div class="screenshot">
+          <img src="assets/screenshots/Screenshot 2025-05-23 at 11.55.18 AM.png" alt="Screenshot of SQL query result">
+          <img src="assets/screenshots/Screenshot 2025-05-23 at 11.55.43 AM.png" alt="Screenshot of SQL query result">
+          <img src="assets/screenshots/Screenshot 2025-05-23 at 11.56.00 AM.png" alt="Screenshot of SQL query result">
+        </div>
+      </div>
+    </section>
+
+    <section id="methodology">
+      <h2>Testing Methodology</h2>
+      <ul>
+        <li>Verified data integrity through constraint testing</li>
+        <li>Validated business rules with targeted queries</li>
+        <li>Documented proper error handling for constraint violations</li>
+        <li>Demonstrated safe data modification practices</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 MySQL Testing Queries | QA Engineering</p>
+  </footer>
+</body>
+</html>
